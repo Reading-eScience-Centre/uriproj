@@ -1,0 +1,76 @@
+{
+  "name": "uriproj",
+  "version": "0.1.0",
+  "license": "BSD-3-Clause",
+  "description": "Map projection functions from standard coordinate reference system URIs.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Reading-eScience-Centre/uriproj.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Reading-eScience-Centre/uriproj/issues"
+  },
+  "author": {
+    "name": "Maik Riechert"
+  },
+  "main": "lib/index.js",
+  "esnext:main": "src/index.js",
+  "dependencies": {
+    "proj4": "^2.3.14",
+    "whatwg-fetch": "^1.0.0"
+  },
+  "jspm": {
+    "registry": "npm",
+    "format": "esm",
+    "main": "src/index.js"
+  },
+  "files": [
+    "src/",
+    "lib/",
+    "uriproj.*"
+  ],
+  "scripts": {
+    "docs": "esdoc -c esdoc.json",
+    "style": "standard",
+    "transpile": "babel -d lib/ src/",
+    "test": "karma start --single-run",
+    "karma": "karma start",
+    "saucelabs": "karma start karma.conf-ci.js",
+    "browserdist": "rollup -c rollup.config.src.js && rollup -c rollup.config.min.js",
+    "build": "npm run transpile && npm run browserdist",
+    "prepublish": "npm run build"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "ignore": [
+      "karma.conf.js",
+      "karma.conf-ci.js",
+      "test/"
+    ]
+  },
+  "devDependencies": {
+    "babel-cli": "^6.3.17",
+    "babel-eslint": "^4.1.3",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-es2015-rollup": "^1.1.1",
+    "babel-register": "^6.3.13",
+    "babelify": "^7.2.0",
+    "browserify": "^11.0.1",
+    "core-js": "^2.0.2",
+    "esdoc": "^0.4.1",
+    "esdoc-importpath-plugin": "0.0.1",
+    "finalhandler": "^0.4.1",
+    "karma": "^0.13.9",
+    "karma-browserify": "^4.4.2",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-mocha": "^0.2.0",
+    "karma-sauce-launcher": "^0.2.14",
+    "mocha": "^2.2.5",
+    "rollup": "^0.30.0",
+    "rollup-plugin-babel": "^2.5.1",
+    "rollup-plugin-commonjs": "^3.1.0",
+    "rollup-plugin-node-resolve": "^1.7.1",
+    "rollup-plugin-uglify": "^1.0.1",
+    "standard": "^5.1.0"
+  }
+}

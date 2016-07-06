@@ -1,0 +1,8 @@
+/.project
+/*.log
+/node_modules/
+/sauce.json
+/docs/
+/.tern-project
+/lib
+/uriproj.*
