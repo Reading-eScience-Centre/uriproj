@@ -45,10 +45,10 @@ var projected = proj.forward([longitude, latitude])
 Currently, the following URIs are recognized:
 
 - http://www.opengis.net/def/crs/OGC/1.3/CRS84
-- http://www.opengis.net/def/crs/EPSG/0/`<CODE>`
+- http://www.opengis.net/def/crs/EPSG/0/ `<CODE>`
 
 ## How it works
 
-This library relies on http://epsg.io for ad-hoc retrieval of [PROJ.4](https://github.com/OSGeo/proj.4) strings for which are then fed into the [proj4js](http://proj4js.org/) library.
+This library relies on http://epsg.io for ad-hoc retrieval of [PROJ.4](https://github.com/OSGeo/proj.4) strings which are then fed into the [proj4js](http://proj4js.org/) library.
 
 It also contains some work-arounds for cases like incorrect latitude/longitude axis ordering.
