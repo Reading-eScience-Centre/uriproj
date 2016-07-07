@@ -40,8 +40,9 @@ This will build the uriproj.{src|min}.js files in the root project folder.
 1. Raise the version number in package.json.
 2. If it is a minor or major version change, update the version in README.md.
 3. Create a semver git tag (`x.y.z`) and push it.
-4. Run `npm publish`.
-5. Attach the `uriproj.{src|min}.js` files to the GitHub release.
+4. Regenerate documentation at https://doc.esdoc.org.
+5. Run `npm publish`.
+6. Attach the `uriproj.{src|min}.js` files to the GitHub release.
 
 The last two steps build and publish the package to the npm registry.
 
