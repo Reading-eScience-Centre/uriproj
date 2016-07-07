@@ -2,5 +2,15 @@
   "title": "uriproj documentation",
   "source": "./src",
   "destination": "./docs",
-  "styles": ["esdoc.css"]
+  "styles": ["esdoc.css"],
+  "plugins": [
+    {
+      "name": "esdoc-importpath-plugin",
+      "option": {
+        "replaces": [
+          {"from": ".*", "to": ""}
+        ]
+      }
+    }
+  ]
 }
