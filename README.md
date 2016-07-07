@@ -15,7 +15,7 @@ uriproj works on browsers and any tool following the CommonJS/node module conven
 A minified browser version of this library is available in the [GitHub releases](https://github.com/reading-escience-centre/uriproj/releases) as well as on [npmcdn](https://npmcdn.com/uriproj/). It can be included like that:
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.14/proj4.js"></script>
-<script src="https://npmcdn.com/uriproj@0.1/uriproj.min.js"></script>
+<script src="https://npmcdn.com/uriproj@0.2/uriproj.min.js"></script>
 ```
 
 An ES6 import would look like that:
