@@ -1,12 +1,18 @@
 # uriproj
 
-Map projection functions from standard coordinate reference system URIs.
+Map projection functions from standard coordinate reference system (CRS) URIs.
+
+This library makes it easy to retrieve map projection functions from CRS URIs.
+It transparently fetches transformation data from http://epsg.io and uses [proj4js](http://proj4js.org/) to generate a projection out of that.
+Once a projection has been generated, it is stored in a local cache for later use to avoid unnecessary network requests.
+
+uriproj also supports manually adding a projection to the local cache together with its URI, either by supplying a PROJ.4 string or a `Projection` object with `forward()` and `inverse()` functions.
 
 ## Install
 
 uriproj works on browsers and any tool following the CommonJS/node module conventions.
 
-A minified browser version of this library is available in the [GitHub releases](https://github.com/reading-escience-centre/uriproj/releases) as well as on  [npmcdn](https://npmcdn.com/uriproj/). It can be included like that:
+A minified browser version of this library is available in the [GitHub releases](https://github.com/reading-escience-centre/uriproj/releases) as well as on [npmcdn](https://npmcdn.com/uriproj/). It can be included like that:
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.14/proj4.js"></script>
 <script src="https://npmcdn.com/uriproj@0.1/uriproj.min.js"></script>
@@ -16,11 +22,15 @@ An ES6 import would look like that:
 ```js
 import * as uriproj from 'uriproj'
 ```
+## API documentation
+
+<https://doc.esdoc.org/github.com/reading-escience-centre/uriproj/>
 
 ## Usage
 
+As an example, we load the British National Grid projection and convert geographic coordinates into projection coordinates and vice-versa.
+
 ```js
-// British National Grid
 uriproj.load('http://www.opengis.net/def/crs/EPSG/0/27700').then(proj => {
   // from WGS84 coordinates to projection coordinates
   var longitude = -1.54
@@ -36,19 +46,22 @@ uriproj.load('http://www.opengis.net/def/crs/EPSG/0/27700').then(proj => {
 })
 ```
 
-Any projection that has been previously loaded can be directly accessed via `get()`:
+Currently, the following URIs are recognized by `load()` (in addition to those stored manually with `set()`):
+
+- http://www.opengis.net/def/crs/OGC/1.3/CRS84
+- http://www.opengis.net/def/crs/EPSG/0/ `<CODE>`
+
+Any projection that has been previously `load()`'ed or stored with `set()` can be directly accessed via `get()`, avoiding the indirection of a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) as in `load()`:
 ```js
 var proj = uriproj.get('http://www.opengis.net/def/crs/EPSG/0/27700')
 var projected = proj.forward([longitude, latitude])
 ```
 
-Currently, the following URIs are recognized:
+Manually storing projections using PROJ.4 strings or projection functions is possible with `set()`:
 
-- http://www.opengis.net/def/crs/OGC/1.3/CRS84
-- http://www.opengis.net/def/crs/EPSG/0/ `<CODE>`
-
-## How it works
-
-This library relies on http://epsg.io for ad-hoc retrieval of [PROJ.4](https://github.com/OSGeo/proj.4) strings which are then fed into the [proj4js](http://proj4js.org/) library.
-
-It also contains some work-arounds for cases like incorrect latitude/longitude axis ordering.
+```js
+var uri = 'http://www.opengis.net/def/crs/EPSG/0/27700'
+var proj4 = '+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 ' +
+   '+ellps=airy +towgs84=446.448,-125.157,542.06,0.15,0.247,0.842,-20.489 +units=m +no_defs'
+uriproj.set(uri, proj4)
+```
