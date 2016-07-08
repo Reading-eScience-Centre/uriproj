@@ -12,7 +12,7 @@ uriproj also supports manually adding a projection to the local cache together w
 
 uriproj works on browsers and any tool following the CommonJS/node module conventions.
 
-A minified browser version of this library is available in the [GitHub releases](https://github.com/reading-escience-centre/uriproj/releases) as well as on [npmcdn](https://npmcdn.com/uriproj/). It can be included like that:
+A minified browser version of this library is available in the [GitHub releases](https://github.com/Reading-eScience-Ccentre/uriproj/releases) as well as on [npmcdn](https://npmcdn.com/uriproj/). It can be included like that:
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.14/proj4.js"></script>
 <script src="https://npmcdn.com/uriproj@0.2/uriproj.min.js"></script>
@@ -24,7 +24,7 @@ import * as uriproj from 'uriproj'
 ```
 ## API documentation
 
-<https://doc.esdoc.org/github.com/reading-escience-centre/uriproj/>
+<https://doc.esdoc.org/github.com/Reading-eScience-Centre/uriproj/>
 
 ## Usage
 
