@@ -115,17 +115,20 @@ export function set (crsUri, proj, options={}) {
   if (!crsUri || !proj) {
     throw new Error('crsUri and proj cannot be empty')
   }
+  let projobj
   if (typeof proj === 'string') {
-    proj = proj4(proj4string)
-    if (!proj4obj) {
-      throw new Error(`Unsupported proj4 string: ${proj4string}`)
+    projobj = proj4(proj)
+    if (!projobj) {
+      throw new Error(`Unsupported proj4 string: ${proj}`)
     }
     if (options.reverseAxes) {
-      proj = reverseAxes(proj4obj)
-    }
+      projobj = reverseAxes(projobj)
+    }    
+  } else {
+    projobj = proj
   }
-  projCache[crsUri] = proj
-  return proj
+  projCache[crsUri] = projobj
+  return projobj
 }
 
 /**
