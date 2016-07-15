@@ -44,7 +44,7 @@ export function get (crsUri) {
 
 /**
  * Returns a {@link Promise} that succeeds with an already stored {@link Projection} or, if not stored,
- * that remotely loads the {@link Projection} (currently using http://epsg.io), stores it, and then succeeds with it.
+ * that remotely loads the {@link Projection} (currently using https://epsg.io), stores it, and then succeeds with it.
  * 
  * @param {string} crsUri The CRS URI for which to return a projection.
  * @return {Promise<Projection,Error>} A {@link Promise} object succeeding with a {@link Projection} object,
@@ -77,7 +77,7 @@ export function load (crsUri) {
   }
   
   let epsg = crsUriToEPSG(crsUri)
-  let url = `http://epsg.io/${epsg}.proj4`
+  let url = `https://epsg.io/${epsg}.proj4`
   
   return fetch(url).then(response => {
     if (!response.ok) {

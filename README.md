@@ -3,7 +3,7 @@
 Map projection functions from standard coordinate reference system (CRS) URIs.
 
 This library makes it easy to retrieve map projection functions from CRS URIs.
-It transparently fetches transformation data from http://epsg.io and uses [proj4js](http://proj4js.org/) to generate a projection out of that.
+It transparently fetches transformation data from https://epsg.io and uses [proj4js](http://proj4js.org/) to generate a projection out of that.
 Once a projection has been generated, it is stored in a local cache for later use to avoid unnecessary network requests.
 
 uriproj also supports manually adding a projection to the local cache together with its URI, either by supplying a PROJ.4 string or a `Projection` object with `forward()` and `inverse()` functions.
