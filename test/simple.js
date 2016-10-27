@@ -1,6 +1,7 @@
 import assert from 'assert'
 import {assertAlmostEqual} from './util.js'
 import * as uriproj from '../src'
+import proj4 from 'proj4'
 
 const ROOT_PREFIX = 'http://www.opengis.net/def/crs/'
 const OGC_PREFIX = ROOT_PREFIX + 'OGC/'
@@ -45,9 +46,12 @@ describe('#load', () => {
     })
   })
   it('should cache loaded projections', () => {
-    return uriproj.load(EPSG_PREFIX + 27700).then(() => {
-      let proj = uriproj.get(EPSG_PREFIX + 27700)
+    let uri = EPSG_PREFIX + 27700
+    return uriproj.load(uri).then(() => {
+      let proj = uriproj.get(uri)
       assert(proj)
+      let proj4Obj = proj4(uri)
+      assert(proj4Obj)
     })
   })
 })

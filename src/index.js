@@ -89,6 +89,8 @@ export function load (crsUri) {
 
 /**
  * Stores a given projection for a given URI that can then be accessed via {@link get} and {@link load}.
+ * If the projection is given as proj4 string and does not require axis reversal, then it is stored
+ * as a named projection in proj4 itself under the given URI.
  * 
  * @param {string} crsUri The CRS URI for which to store the projection.
  * @param {string|Projection} proj A proj4 string or a {@link Projection} object.
@@ -121,6 +123,7 @@ export function set (crsUri, proj, options={}) {
     if (!projobj) {
       throw new Error(`Unsupported proj4 string: ${proj}`)
     }
+    proj4.defs(crsUri, proj)
     if (options.reverseAxes) {
       projobj = reverseAxes(projobj)
     }    
