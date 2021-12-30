@@ -6,3 +6,5 @@
 /.tern-project
 /lib
 /uriproj.*
+lcov.info
+/package-lock.json

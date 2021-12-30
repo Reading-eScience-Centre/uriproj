@@ -1,4 +1,3 @@
-import 'whatwg-fetch'
 import proj4 from 'proj4'
 
 const ROOT_PREFIX = 'http://www.opengis.net/def/crs/'
