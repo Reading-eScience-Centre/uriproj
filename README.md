@@ -12,10 +12,10 @@ uriproj also supports manually adding a projection to the local cache together w
 
 uriproj works on browsers and any tool following the CommonJS/node module conventions.
 
-A minified browser version of this library is available in the [GitHub releases](https://github.com/Reading-eScience-Ccentre/uriproj/releases) as well as on [unpkg](https://unpkg.com/uriproj/). It can be included like that:
+A minified browser version of this library is available in the [GitHub releases](https://github.com/Reading-eScience-Ccentre/uriproj/releases) as well as on [jsDelivr](https://www.jsdelivr.com/package/npm/uriproj). It can be included like that:
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.14/proj4.js"></script>
-<script src="https://unpkg.com/uriproj@0.2/uriproj.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uriproj@0.2/uriproj.min.js"></script>
 ```
 
 An ES6 import would look like that:
